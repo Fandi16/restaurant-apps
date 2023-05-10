@@ -1,4 +1,4 @@
-import 'regenerator-runtime'; /* for async await transpile */
+import 'regenerator-runtime';
 import '../styles/main.css';
 import './components/app-bar';
 import './components/jumbotran';
@@ -20,7 +20,9 @@ mainElement.addEventListener('click', (event) => {
 });
 
 const app = new App({
-
+  button: document.querySelector('#menu'),
+  drawer: document.querySelector('#drawer'),
+  content: document.querySelector('#mainContent'),
 });
 
 window.addEventListener('hashchange', () => {

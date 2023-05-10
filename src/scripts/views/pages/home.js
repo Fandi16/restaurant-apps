@@ -4,20 +4,20 @@ import { createrestaurantsItemTemplate } from '../templates/template-creator';
 const Home = {
   async render() {
     return `
-    <section class="content-header">
-      <article class="headline">
-        <h1 tabindex="4" class="explore">Explore Restaurant</h1>
-      </article>
+    <section class="content">
+      <div class="latest">
+        <h1>Explore Restaurant</h1>
+        <div class="list" id="tes"></div>
+      </div>
     </section>
-    <section id="content-list" class="content-list"></section>
       `;
   },
 
   async afterRender() {
-    const restaurants = await restaurantSource.listRestaurant();
-    const restaurantContainer = document.querySelector('#content-list');
-    restaurants.forEach((restaurant) => {
-      restaurantContainer.innerHTML += createrestaurantsItemTemplate(restaurant);
+    const restaurant = await restaurantSource.listRestaurans();
+    const restaurantContainer = document.querySelector('#tes');
+    restaurant.forEach((restaurants) => {
+      restaurantContainer.innerHTML += createrestaurantsItemTemplate(restaurants);
     });
   },
 };

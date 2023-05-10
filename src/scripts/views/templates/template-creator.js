@@ -31,19 +31,18 @@ const createrestaurantsDetailTemplate = (restaurants) => `
 `;
 
 const createrestaurantsItemTemplate = (restaurants) => `
-  <div class="card">
- eslint-disable-next-line max-len
-           <img class="card_thumb" src="${restaurants.pictureId}" alt="${restaurants.name}" title="${restaurants.name}">
-           <div class="kota">${restaurants.city}</div>
-           <div class="card_content">
-             <p class="card_rating">
-                  Rating :
-                   <a href="#" class="card_rating_number">${restaurants.rating}</a>
-               </p>
-               <h1 class="card_title"><a href="#">${restaurants.name}</a></h1>
-               <div class="card_desc">${restaurants.description.slice(0, 150)}...</div>
+      <div class="card">
+          <img class="card_thumb" src="${CONFIG.BASE_URL + CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name}" title="${restaurants.name}">
+          <div class="kota">${restaurants.city}</div>
+          <div class="card_content">
+              <p class="card_rating">
+                  Rating : 
+                  <a href="#" class="card_rating_number">${restaurants.rating}</a>
+              </p>
+              <h1 class="card_title"><a href="#">${restaurants.name}</a></h1>
+              <div class="card_desc">${restaurants.description.slice(0, 150)}...</div>
           </div>
-     </div>
+      </div>
 `;
 export {
   createrestaurantsItemTemplate,
