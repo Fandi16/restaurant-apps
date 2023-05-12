@@ -2,8 +2,13 @@ import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 
 class App {
-  constructor(options) {
-    this._content = options.content;
+  constructor({
+    content, menu, drawer, main,
+  }) {
+    this._content = content;
+    this._menu = menu;
+    this._drawer = drawer;
+    this._main = main;
   }
 
   async renderPage() {

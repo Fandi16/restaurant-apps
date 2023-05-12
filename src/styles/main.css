@@ -227,6 +227,45 @@ main {
   text-align: justify;
 }
 
+.detailRestaurant {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 16px;
+}
+
+.detailRestaurant.restaurant__poster {
+  width: 100%;
+  max-width: 400px;
+}
+
+.detailRestaurant .restaurant__info h4 {
+  padding-top:10px ;
+  padding-bottom: 10px;
+  color: #04552f;
+
+}
+.like {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #db0000;
+
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  border-radius: 50%;
+  border: 0;
+
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
 footer {
   padding: 16px;
   background-color: #141414;

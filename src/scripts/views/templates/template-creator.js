@@ -1,26 +1,26 @@
 import CONFIG from '../../globals/config';
 
-const createrestaurantsDetailTemplate = (restaurants) => `
-  <h2 class="restaurants__name">${restaurants.name}</h2>
-  <img class="restaurants__image" src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name}" />
+const createrestaurantsDetailTemplate = (restaurant) => `
+  <h2 class="restaurants__name">${restaurant.name}</h2>
+  <img class="restaurants__image" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
   <div class="restaurant__info">
     <h3>Information</h3>
     <h4>Description</h4>
-    <p>${restaurants.description}</p>
+    <p>${restaurant.description}</p>
     <h4>Address</h4>
-    <p>${restaurants.address}</p>
+    <p>${restaurant.address}</p>
     <h4>City</h4>
-    <p>${restaurants.city}</p>
+    <p>${restaurant.city}</p>
     <h4>Menu Makanan</h4>
     <ul>
-      ${restaurants.menus.foods.map((foods) => `<li>${foods.name}</li>`).join('')}
+      ${restaurant.menus.foods.map((foods) => `<li>${foods.name}</li>`).join('')}
     </ul>
     <h4>Menu Minuman</h4>
     <ul>
-      ${restaurants.menus.foods.map((drinks) => `<li>${drinks.name}</li>`).join('')}
+      ${restaurant.menus.drinks.map((drinks) => `<li>${drinks.name}</li>`).join('')}
     </ul>
     <h4>Customer Reviews</h4>
-    ${restaurants.customerReviews.map((review) => `
+    ${restaurant.customerReviews.map((review) => `
       <div class="review">
         <p class="review__name">${review.name}</p>
         <p class="review__date">${review.date}</p>
@@ -30,21 +30,33 @@ const createrestaurantsDetailTemplate = (restaurants) => `
   </div>
 `;
 
-const createrestaurantsItemTemplate = (restaurants) => `
+const createrestaurantsItemTemplate = (restaurant) => `
       <div class="card">
-          <img class="card_thumb" src="${CONFIG.BASE_URL + CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name}" title="${restaurants.name}">
-          <div class="kota">${restaurants.city}</div>
+          <img class="card_thumb" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" title="${restaurant.name}">
+          <div class="kota">${restaurant.city}</div>
           <div class="card_content">
               <p class="card_rating">
                   Rating : 
-                  <a href="#" class="card_rating_number">${restaurants.rating}</a>
+                  <a href="#" class="card_rating_number">${restaurant.rating}</a>
               </p>
-              <h1 class="card_title"><a href="#">${restaurants.name}</a></h1>
-              <div class="card_desc">${restaurants.description.slice(0, 150)}...</div>
+              <h1 class="card_title"><a href="/#/detail/${restaurant.id}">${restaurant.name}</a></h1>
+              <div class="card_desc">${restaurant.description.slice(0, 150)}...</div>
           </div>
       </div>
+`;
+const createLikeButtonTemplate = () => `
+  <button aria-label="like this movie" id="likeButton" class="like">
+    <i class="fa fa-heart-o" aria-hidden="true"></i>
+  </button>
+`;
+const createLikedButtonTemplate = () => `
+  <button aria-label="unlike this movie" id="likeButton" class="like">
+    <i class="fa fa-heart" aria-hidden="true"></i>
+  </button>
 `;
 export {
   createrestaurantsItemTemplate,
   createrestaurantsDetailTemplate,
+  createLikedButtonTemplate,
+  createLikeButtonTemplate,
 };
