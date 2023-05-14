@@ -11,6 +11,14 @@ import CONFIG from './globals/config';
 const hamburgerButtonElement = document.querySelector('#hamburgerButton');
 const drawerElement = document.querySelector('#Drawer');
 const mainElement = document.querySelector('.menu');
+const skipLink = document.querySelector('.skip-link');
+const mainContent = document.querySelector('#mainContent');
+
+skipLink.addEventListener('click', (event) => {
+  event.preventDefault();
+  mainContent.scrollIntoView({ behavior: 'smooth' });
+  skipLink.blur();
+});
 
 hamburgerButtonElement.addEventListener('click', (event) => {
   drawerElement.classList.toggle('open');

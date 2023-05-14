@@ -38,12 +38,13 @@
     "webpack-merge": "^5.8.0",
     "whatwg-fetch": "^3.6.2",
     "workbox-core": "^6.5.4",
-    "workbox-strategies": "^6.5.4",
-    "workbox-webpack-plugin": "^6.5.4"
+    "workbox-strategies": "^6.5.4"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "idb": "^7.1.1",
     "regenerator-runtime": "^0.13.9",
+    "workbox-webpack-plugin": "^6.5.4",
     "workbox-window": "^6.5.4"
   }
 }

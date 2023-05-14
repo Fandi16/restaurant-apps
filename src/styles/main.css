@@ -210,8 +210,8 @@ main {
 }
 
 .card_title a {
-  width: 44px;
-  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   text-decoration: none;
   color: #333;
   font-size: 20px;
@@ -228,17 +228,15 @@ main {
 }
 
 .detailRestaurant {
-  margin: 0 auto;
   width: 100%;
   max-width: 800px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px 16px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.detailRestaurant.restaurant__poster {
+.detailRestaurant .restaurant__image {
   width: 100%;
-  max-width: 400px;
 }
 
 .detailRestaurant .restaurant__info h4 {
@@ -343,7 +341,6 @@ footer #footerTools {
   .list_items-content {
     padding: 16px 32px 32px 32px;
   }
-
   .list_items-title {
     font-size: 18px;
   }
@@ -351,6 +348,17 @@ footer #footerTools {
   .list_items-description {
     font-size: 14px;
   }
+  .restaurants__image{
+    width: 100%;
+    padding: 5px;
+  }
+
+}
+@media screen and (min-width: 450px){
+  .restaurants__image {
+      width: 100%;
+      padding: 5px;
+    }
 }
 
 @media screen and (min-width: 700px) {
