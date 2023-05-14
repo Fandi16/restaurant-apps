@@ -30,17 +30,17 @@ const createrestaurantsDetailTemplate = (restaurant) => `
   </div>
 `;
 
-const createrestaurantsItemTemplate = (restaurant) => `
+const createrestaurantsItemTemplate = (restaurants) => `
       <div class="card">
-          <img class="card_thumb" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" title="${restaurant.name}">
-          <div class="kota">${restaurant.city}</div>
+          <img class="card_thumb" src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name}" title="${restaurants.name}">
+          <div class="kota">${restaurants.city}</div>
           <div class="card_content">
               <p class="card_rating">
                   Rating : 
-                  <a href="#" class="card_rating_number">${restaurant.rating}</a>
+                  <a href="#" class="card_rating_number">${restaurants.rating}</a>
               </p>
-              <h1 class="card_title"><a href="/#/detail/${restaurant.id}">${restaurant.name}</a></h1>
-              <div class="card_desc">${restaurant.description.slice(0, 150)}...</div>
+              <h1 class="card_title"><a href="/#/detail/${restaurants.id}">${restaurants.name}</a></h1>
+              <div class="card_desc">${restaurants.description.slice(0, 150)}...</div>
           </div>
       </div>
 `;

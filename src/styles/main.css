@@ -265,6 +265,16 @@ main {
   color: white;
   cursor: pointer;
 }
+.content {
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.content .content__heading {
+  padding: 10px;
+  text-align: center;
+  color: #04552f;
+}
 
 footer {
   padding: 16px;
