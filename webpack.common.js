@@ -53,6 +53,17 @@ module.exports = {
             },
           },
         },
+        {
+          urlPattern: /^https:\/\/restaurant-api.dicoding.dev\/images\/medium\//,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'IMAGE-CACHE',
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 30 * 24 * 60 * 60,
+            },
+          },
+        },
       ],
     }),
   ],

@@ -197,6 +197,8 @@ main {
 }
 
 .card_title {
+  min-width: 44px;
+  min-height: 44px;
   font-weight: 500;
   font-size: 18px;
   margin-top: 5px;
