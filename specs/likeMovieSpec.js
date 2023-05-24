@@ -12,7 +12,8 @@ describe('Liking A Restaurant', () => {
   {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 })
   
-    expect( document.querySelector( '[aria-label="like this Restaurant"]' ) ).toBeTruthy();
+    expect( document.querySelector( '[aria-label="like this Restaurant"]' ) )
+      .toBeTruthy();
   });
   it('should not show the unlike button when the Restaurant has not been liked before', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant( { id: 1 } )
@@ -39,9 +40,9 @@ describe('Liking A Restaurant', () => {
   });
 
   it('should not add a Restaurant when it has no id', async () => {
-    await TestFactories.createLikeButtonPresenterWithRestaurant( { id: 1 } )
+    await TestFactories.createLikeButtonPresenterWithRestaurant( {} )
     
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
     expect(await FavoriteRestaurantIdb.getAllRestaurant()).toEqual([]);
   });
-  });
+});
