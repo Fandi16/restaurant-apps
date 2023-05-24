@@ -45,4 +45,4 @@ describe('Liking A Restaurant', () => {
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
     expect(await FavoriteRestaurantIdb.getAllRestaurant()).toEqual([]);
   });
-});
+  });
