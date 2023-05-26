@@ -10,9 +10,15 @@ class FavoriteRestaurantSearchPresenter {
         this._searchRestaurant(event.target.value);
     });
     }
-    async _searchRestaurant(latestQuery) {
-    this._latestQuery = latestQuery;
-      const foundRestaurant = await this._favoriteRestaurants.searchRestaurant(this.latestQuery);
+  async _searchRestaurant(latestQuery) {
+    this._latestQuery = latestQuery.trim();
+
+    let foundRestaurant;
+    if (this.latestQuery.length > 0) {
+      foundRestaurant = await this._favoriteRestaurant.searchRestaurant(this.latestQuery);
+    } else {
+      foundRestaurant = await this._favoriteRestaurant.getAllRestaurant();
+    }
 
     this._showFoundRestaurant(foundRestaurant);
   }
@@ -25,7 +31,7 @@ class FavoriteRestaurantSearchPresenter {
 
     document.querySelector( '.Restaurant' ).innerHTML = html;
 
-     document.getElementById('Restaurant-search-container').dispatchEvent(new Event('Restaurants:searched:updated'));
+     document.getElementById('Restaurant-search-container').dispatchEvent(new Event('Restaurant:searched:updated'));
   }
 
 
