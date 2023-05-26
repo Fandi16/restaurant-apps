@@ -10,9 +10,11 @@ class FavoriteRestaurantSearchPresenter {
         this._searchRestaurant(event.target.value);
     });
     }
-    _searchRestaurant(latestQuery) {
+    async _searchRestaurant(latestQuery) {
     this._latestQuery = latestQuery;
-    this._favoriteRestaurant.searchRestaurant(this.latestQuery);
+      const foundRestaurant = await this._favoriteRestaurants.searchRestaurant(this.latestQuery);
+
+    this._showFoundRestaurant(foundRestaurant);
   }
 
   _showFoundRestaurant(Restaurant) {
@@ -21,7 +23,9 @@ class FavoriteRestaurantSearchPresenter {
       '',
     );
 
-    document.querySelector('.Restaurant').innerHTML = html;
+    document.querySelector( '.Restaurant' ).innerHTML = html;
+
+     document.getElementById('Restaurant-search-container').dispatchEvent(new Event('Restaurants:searched:updated'));
   }
 
 

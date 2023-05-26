@@ -32,13 +32,12 @@ describe('Searching Restaurant', () => {
   });
 
   it('should be able to capture the query typed by the user', () => {
-    searchRestaurant('film a');
-
+    searchRestaurant( 'film a' );
     expect(presenter.latestQuery).toEqual('film a');
   });
 
   it('should ask the model to search for Restaurant', () => {
-    searchRestaurant('film a');
+    searchRestaurant( 'film a' );
     expect( FavoriteRestaurantIdb.searchRestaurant ).toHaveBeenCalledWith( 'film a' );
   } );
   
@@ -75,7 +74,40 @@ describe('Searching Restaurant', () => {
 
     expect(document.querySelectorAll('.Restaurant__title').item(0).textContent)
       .toEqual('-');
-  }
-);
+  } );
+  it('should show the Restaurant found by Favorite Restaurant', (done) => {
+    document.getElementById('Restaurant-search-container')
+      .addEventListener('Restaurant:searched:updated', () => {
+        expect(document.querySelectorAll('.Restaurant').length).toEqual(3);
+        done();
+      });
+
+    FavoriteRestaurantIdb.searchRestaurant.withArgs('film a').and.returnValues([
+      { id: 111, title: 'film abc' },
+      { id: 222, title: 'ada juga film abcde' },
+      { id: 333, title: 'ini juga boleh film a' },
+    ]);
+
+    searchRestaurant('film a');
+  });
+
+  it('should show the name of the Restaurant found by Favorite Restaurant', (done) => {
+    document.getElementById('Restaurant-search-container').addEventListener('Restaurant:searched:updated', () => {
+      const RestaurantTitles = document.querySelectorAll('.Restaurant__title');
+      expect(RestaurantTitles.item(0).textContent).toEqual('film abc');
+      expect(RestaurantTitles.item(1).textContent).toEqual('ada juga film abcde');
+      expect(RestaurantTitles.item(2).textContent).toEqual('ini juga boleh film a');
+
+      done();
+    });
+
+    FavoriteRestaurantIdb.searchRestaurant.withArgs('film a').and.returnValues([
+      { id: 111, title: 'film abc' },
+      { id: 222, title: 'ada juga film abcde' },
+      { id: 333, title: 'ini juga boleh film a' },
+    ]);
+
+    searchRestaurant('film a');
+  });
 
 });
