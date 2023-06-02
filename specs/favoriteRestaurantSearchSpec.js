@@ -11,7 +11,7 @@ describe('Searching Restaurant', () => {
     queryElement.dispatchEvent(new Event('change'));
   };
 
-  const setRestaurantSearchContainer = () => {
+  const setRestaurantearchContainer = () => {
     document.body.innerHTML = `
         <div id="Restaurant-search-container">
             <input id="query" type="text">
@@ -28,13 +28,13 @@ describe('Searching Restaurant', () => {
     presenter = new FavoriteRestaurantSearchPresenter({FavoriteRestaurant: FavoriteRestaurant,});
   };
     beforeEach(() => {
-    setRestaurantSearchContainer();
+    setRestaurantearchContainer();
     constructPresenter();
   });
 
  describe('When query is not empty', () => {
     it('should be able to capture the query typed by the user', () => {
-      searchMovies('film a');
+      searchRestaurant('film a');
          expect(presenter.latestQuery)
         .toEqual('film a');
     });
@@ -49,7 +49,7 @@ describe('Searching Restaurant', () => {
       expect(document.querySelectorAll('.Restaurant').length)
         .toEqual(1);
 
-      presenter._showFoundRestaurants([{
+      presenter._showFoundRestaurant([{
         id: 1,
         title: 'Satu',
       }, {
@@ -113,7 +113,6 @@ describe('Searching Restaurant', () => {
         });
 
       FavoriteRestaurant.searchRestaurant.withArgs('film a')
-        .and
         .returnValues([
           {
             id: 111,
@@ -192,5 +191,29 @@ describe('Searching Restaurant', () => {
         .toHaveBeenCalled();
     });
   });
+  describe('When no favorite Restaurant could be found', () => {
+    it('should show the empty message', (done) => {
+      document.getElementById('Restaurant-search-container')
+        .addEventListener('Restaurant:searched:updated', () => {
+          expect(document.querySelectorAll('.Restaurant__not__found').length)
+            .toEqual(1);
+          done();
+        });
 
-});
+      FavoriteRestaurant.searchRestaurant.withArgs('film a').and.returnValues([]);
+
+      searchRestaurant('film a');
+    });
+
+    it('should not show any Restaurant', (done) => {
+      document.getElementById('Restaurant-search-container').addEventListener('Restaurant:searched:updated', () => {
+        expect(document.querySelectorAll('.Restaurant').length).toEqual(0);
+        done();
+      });
+
+      FavoriteRestaurant.searchRestaurant.withArgs('film a').and.returnValues([]);
+
+      searchRestaurant('film a');
+    });
+  });
+} );

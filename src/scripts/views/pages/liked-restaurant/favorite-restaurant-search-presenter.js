@@ -24,10 +24,16 @@ class FavoriteRestaurantSearchPresenter {
   }
 
   _showFoundRestaurant(Restaurant) {
-    const html = Restaurant.reduce(
-      (carry, Restaurant) => carry.concat(`<li class="Restaurant"><span class="Restaurant__title">${Restaurant.title || '-'}</span></li>`),
-      '',
-    );
+        let html;
+
+    if (Restaurant.length > 0) {
+      html = Restaurant.reduce(
+        (carry, Restaurant) => carry.concat(`<li class="Restaurant"><span class="Restaurant__title">${Restaurant.title || '-'}</span></li>`),
+        '',
+      );
+    } else {
+      html = '<div class="Restaurant__not__found">Film tidak ditemukan</div>';
+    }
 
     document.querySelector( '.Restaurant' ).innerHTML = html;
 
