@@ -11,7 +11,7 @@ describe('Searching Restaurant', () => {
     queryElement.dispatchEvent(new Event('change'));
   };
 
-  const setRestaurantearchContainer = () => {
+  const setRestaurantSearchContainer = () => {
     document.body.innerHTML = `
         <div id="Restaurant-search-container">
             <input id="query" type="text">
@@ -25,10 +25,10 @@ describe('Searching Restaurant', () => {
 
   const constructPresenter = () => {
     FavoriteRestaurant = spyOnAllFunctions(FavoriteRestaurantIdb);
-    presenter = new FavoriteRestaurantSearchPresenter({FavoriteRestaurant: FavoriteRestaurant,});
+    presenter = new FavoriteRestaurantSearchPresenter({favoriteRestaurant: FavoriteRestaurant});
   };
     beforeEach(() => {
-    setRestaurantearchContainer();
+    setRestaurantSearchContainer();
     constructPresenter();
   });
 
@@ -167,7 +167,7 @@ describe('Searching Restaurant', () => {
   } );
   describe('When query is empty', () => {
     it('should capture the query as empty', () => {
-      searchRestaurant(' ');
+    searchRestaurant(' ');
       expect(presenter.latestQuery.length)
         .toEqual(0);
 

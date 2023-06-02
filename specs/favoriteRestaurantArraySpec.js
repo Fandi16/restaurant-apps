@@ -31,6 +31,18 @@ const FavoriteRestaurantArray = {
     deleteRestaurant(id) {
     favoriteRestaurant = favoriteRestaurant.filter((Restaurant) => Restaurant.id != id);
     },
+    searchRestaurant(query) {
+    return this.getAllRestaurant()
+      .filter((Restaurant) => {
+        const loweredCaseRestaurantTitle = (Restaurant.title || '-').toLowerCase();
+        const jammedRestaurantTitle = loweredCaseRestaurantTitle.replace(/\s/g, '');
+
+        const loweredCaseQuery = query.toLowerCase();
+        const jammedQuery = loweredCaseQuery.replace(/\s/g, '');
+
+        return jammedRestaurantTitle.indexOf(jammedQuery) !== -1;
+      });
+  },
 };
     
 describe('Favorite Restaurant Array Contract Test Implementation', () => {
