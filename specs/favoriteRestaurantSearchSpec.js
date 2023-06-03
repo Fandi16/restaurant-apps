@@ -1,4 +1,4 @@
-import FavoriteRestaurantSearchPresenter from '/xampp/htdocs/Dicoding/front end expert/restaurant-apps/src/scripts/views/pages/liked-restaurant/favorite-restaurant-search-presenter';
+import FavoriteRestaurantSearchPresenter from '../src/scripts/views/pages/liked-restaurant/favorite-restaurant-search-presenter';
 import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 
 describe('Searching Restaurant', () => {
@@ -34,14 +34,14 @@ describe('Searching Restaurant', () => {
 
  describe('When query is not empty', () => {
     it('should be able to capture the query typed by the user', () => {
-      searchRestaurant('film a');
+      searchRestaurant('Restaurant a');
          expect(presenter.latestQuery)
-        .toEqual('film a');
+        .toEqual('Restaurant a');
     });
 
     it('should ask the model to search for Restaurant', () => {
-      searchRestaurant( 'film a' );
-    expect( FavoriteRestaurant.searchRestaurant ).toHaveBeenCalledWith( 'film a' );
+      searchRestaurant( 'Restaurant a' );
+    expect( FavoriteRestaurant.searchRestaurant ).toHaveBeenCalledWith( 'Restaurant a' );
     } );
   
     it('should show the found Restaurant', () => {
@@ -112,23 +112,24 @@ describe('Searching Restaurant', () => {
           done();
         });
 
-      FavoriteRestaurant.searchRestaurant.withArgs('film a')
+    FavoriteRestaurant.searchRestaurant.withArgs( 'Restaurant a' )
+        .and
         .returnValues([
           {
             id: 111,
-            title: 'film abc',
+            title: 'Restaurant abc',
           },
           {
             id: 222,
-            title: 'ada juga film abcde',
+            title: 'ada juga Restaurant abcde',
           },
           {
             id: 333,
-            title: 'ini juga boleh film a',
+            title: 'ini juga boleh Restaurant a',
           },
         ]);
 
-      searchRestaurant('film a');
+      searchRestaurant('Restaurant a');
     });
 
     it('should show the name of the Restaurant found by Favorite Restaurant', (done) => {
@@ -136,42 +137,42 @@ describe('Searching Restaurant', () => {
         .addEventListener('Restaurant:searched:updated', () => {
           const RestaurantTitles = document.querySelectorAll('.Restaurant__title');
           expect(RestaurantTitles.item(0).textContent)
-            .toEqual('film abc');
+            .toEqual('Restaurant abc');
           expect(RestaurantTitles.item(1).textContent)
-            .toEqual('ada juga film abcde');
+            .toEqual('ada juga Restaurant abcde');
           expect(RestaurantTitles.item(2).textContent)
-            .toEqual('ini juga boleh film a');
+            .toEqual('ini juga boleh Restaurant a');
 
           done();
         });
 
-      FavoriteRestaurant.searchRestaurant.withArgs('film a')
+      FavoriteRestaurant.searchRestaurant.withArgs('Restaurant a')
         .and
         .returnValues([
           {
             id: 111,
-            title: 'film abc',
+            title: 'Restaurant abc',
           },
           {
             id: 222,
-            title: 'ada juga film abcde',
+            title: 'ada juga Restaurant abcde',
           },
           {
             id: 333,
-            title: 'ini juga boleh film a',
+            title: 'ini juga boleh Restaurant a',
           },
         ]);
 
-      searchRestaurant('film a');
+      searchRestaurant('Restaurant a');
     });
   } );
   describe('When query is empty', () => {
     it('should capture the query as empty', () => {
-    searchRestaurant(' ');
+    searchRestaurant('');
       expect(presenter.latestQuery.length)
         .toEqual(0);
 
-    searchRestaurant('    ');
+    searchRestaurant('');
       expect(presenter.latestQuery.length)
         .toEqual(0);
 
@@ -185,7 +186,7 @@ describe('Searching Restaurant', () => {
     });
 
     it('should show all favorite Restaurant', () => {
-      searchRestaurant('    ');
+      searchRestaurant('');
 
     expect(FavoriteRestaurant.getAllRestaurant)
         .toHaveBeenCalled();
@@ -200,9 +201,9 @@ describe('Searching Restaurant', () => {
           done();
         });
 
-      FavoriteRestaurant.searchRestaurant.withArgs('film a').and.returnValues([]);
+      FavoriteRestaurant.searchRestaurant.withArgs('Restaurant a').and.returnValues([]);
 
-      searchRestaurant('film a');
+      searchRestaurant('Restaurant a');
     });
 
     it('should not show any Restaurant', (done) => {
@@ -211,9 +212,9 @@ describe('Searching Restaurant', () => {
         done();
       });
 
-      FavoriteRestaurant.searchRestaurant.withArgs('film a').and.returnValues([]);
+      FavoriteRestaurant.searchRestaurant.withArgs('Restaurant a').and.returnValues([]);
 
-      searchRestaurant('film a');
+      searchRestaurant('Restaurant a');
     });
   });
 } );

@@ -22,15 +22,15 @@ class FavoriteRestaurantSearchPresenter {
     this._showFoundRestaurant( foundRestaurant );
   }
   
-_showFoundRestaurant(restaurants) {
+_showFoundRestaurant(restaurant) {
   let html;
-  if (restaurants.length > 0) {
-    html = restaurants.reduce(
-      (carry, restaurant) => carry.concat(`<li class="Restaurant"><span class="Restaurant__title">${restaurant.title || '-'}</span></li>`),
+  if (restaurant && restaurant.length > 0) {
+    html = restaurant.reduce(
+      (carry, Restaurant) => carry.concat(`<li class="Restaurant"><span class="Restaurant__title">${Restaurant.title || '-'}</span></li>`),
       '',
     );
   } else {
-    html = '<div class="Restaurant__not__found">Film tidak ditemukan</div>';
+    html = '<div class="Restaurant__not__found">Restaurant tidak ditemukan</div>';
   }
 
   document.querySelector('.Restaurant').innerHTML = html;
