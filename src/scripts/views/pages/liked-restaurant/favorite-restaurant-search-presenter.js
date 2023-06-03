@@ -22,10 +22,10 @@ class FavoriteRestaurantSearchPresenter {
     this._showFoundRestaurant( foundRestaurant );
   }
   
-_showFoundRestaurant(restaurant) {
+_showFoundRestaurant(Restaurant) {
   let html;
-  if (restaurant && restaurant.length > 0) {
-    html = restaurant.reduce(
+  if (Restaurant && Restaurant.length > 0) {
+    html = Restaurant.reduce(
       (carry, Restaurant) => carry.concat(`<li class="Restaurant"><span class="Restaurant__title">${Restaurant.title || '-'}</span></li>`),
       '',
     );
