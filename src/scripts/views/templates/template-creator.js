@@ -32,15 +32,15 @@ const createrestaurantsDetailTemplate = (restaurant) => `
 
 const createrestaurantsItemTemplate = (restaurants) => `
       <div class="card">
-          <img class="card_thumb" src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name}" title="${restaurants.name}">
+          <img class="card_thumb" src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name|| '-'}" title="${restaurants.name|| '-'}">
           <div class="kota">${restaurants.city}</div>
           <div class="card_content">
               <p class="card_rating">
                   Rating : 
                   <a href="#" class="card_rating_number">${restaurants.rating}</a>
               </p>
-              <h1 class="card_title"><a href="/#/detail/${restaurants.id}">${restaurants.name}</a></h1>
-              <div class="card_desc">${restaurants.description.slice(0, 150)}...</div>
+              <h1 class="card_title"><a href="/#/detail/${restaurants.id}">${restaurants.name|| '-'}</a></h1>
+              <div class="card_desc">${restaurants.description}...</div>
           </div>
       </div>
 `;

@@ -1,25 +1,18 @@
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
-import { createrestaurantsItemTemplate } from '../templates/template-creator';
+import FavoriteRestaurantSearchView from '../pages/liked-restaurant/FavoriteRestaurantSearchView';
+import FavoriteRestauranthowPresenter from '../pages/liked-restaurant/favorite-Restaurant-show-presenter';
+import FavoriteRestaurantSearchPresenter from '../pages/liked-restaurant/favorite-restaurant-search-presenter';
+
+const view = new FavoriteRestaurantSearchView();
 
 const Like = {
   async render() {
-    return `
-          <div class="content">
-            <h2 class="content__heading">FAVORITE RESTAURANTS</h2>
-            <div id="restaurants" class="restaurants">
-     
-            </div>
-          </div>
-        `;
+    return view.getTemplate();
   },
 
   async afterRender() {
-    const restaurant = await FavoriteRestaurantIdb.getAllRestaurant();
-    const restaurantContainer = document.querySelector('#restaurants');
-
-    restaurant.forEach((restaurants) => {
-      restaurantContainer.innerHTML += createrestaurantsItemTemplate(restaurants);
-    });
+    new FavoriteRestauranthowPresenter({ view, favoriteRestaurant: FavoriteRestaurantIdb });
+    new FavoriteRestaurantSearchPresenter({ view, favoriteRestaurant: FavoriteRestaurantIdb });
   },
 };
 
