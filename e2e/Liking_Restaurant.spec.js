@@ -24,7 +24,7 @@ Scenario('liking one Restaurant', async ({I}) => {
   I.click('#likeButton');
 
   I.amOnPage('/#/favorite');
-  I.seeElement('.Restaurant-item');
+  I.seeElement('.card');
   const likedRestaurantTitle = await I.grabTextFrom('.card_title');
 
   assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
