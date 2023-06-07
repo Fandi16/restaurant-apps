@@ -7,6 +7,12 @@ import App from './views/app';
 import swRegister from './utils/sw-register';
 import WebSocketInitiator from './utils/websocket-initiator';
 import CONFIG from './globals/config';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import filter from 'lodash.filter';
+
+const START = 10;
+const NUMBER_OF_IMAGES = 100;
 
 const hamburgerButtonElement = document.querySelector('#hamburgerButton');
 const drawerElement = document.querySelector('#Drawer');
@@ -44,4 +50,7 @@ window.addEventListener('load', () => {
   app.renderPage();
   swRegister();
   WebSocketInitiator.init(CONFIG.WEB_SOCKET_SERVER);
-});
+} );
+
+filter(contacts, contactType.value === 'all' ? {} : { type: contactType.value })
+  .forEach(renderContact);

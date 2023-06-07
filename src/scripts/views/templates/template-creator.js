@@ -32,7 +32,7 @@ const createrestaurantsDetailTemplate = (restaurant) => `
 
 const createrestaurantsItemTemplate = (restaurants) => `
       <div class="card">
-          <img class="card_thumb" src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name|| '-'}" title="${restaurants.name|| '-'}">
+          <img class="card_thumb lazyload" data-src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name|| '-'}" title="${restaurants.name|| '-'}">
           <div class="kota">${restaurants.city}</div>
           <div class="card_content">
               <p class="card_rating">

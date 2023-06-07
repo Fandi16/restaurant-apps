@@ -77,6 +77,13 @@ button {
   left: 0;
 }
 .Jumbotran {
+  background-image:
+    image-set(url('../public/images/heros/hero-image_2.jpg') 480w,
+      url('../public/images/heros/hero-image_2.jpg') 800w,
+      url('../public/images/heros/hero-image_2.jpg') 1420w,
+    )
+}
+.Jumbotran {
   background-image: url("../public/images/heros/hero-image_2.jpg");
   display: flex;
   align-items: center;

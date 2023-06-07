@@ -33,7 +33,7 @@ class FavoriteRestaurantSearchView {
     document.getElementById('Restaurant').dispatchEvent(new Event('Restaurant:updated'));
   }
    _getEmptyRestaurantTemplate() {
-    return '<div class="Restaurant-item__not__found movies__not__found">Tidak ada Restaurant untuk ditampilkan</div>';
+    return '<div class="Restaurant-item__not__found Restaurant__not__found">Tidak ada Restaurant untuk ditampilkan</div>';
   }
 }
 

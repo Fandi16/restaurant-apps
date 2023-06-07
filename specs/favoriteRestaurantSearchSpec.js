@@ -110,7 +110,7 @@ describe('Searching Restaurant', () => {
   describe('When no favorite Restaurant could be found', () => {
   it('should show the empty message', (done) => {
     document.getElementById('Restaurant').addEventListener('Restaurant:updated', () => {
-      expect(document.querySelectorAll('.Restaurant__not__found').length).toEqual(0);
+      expect(document.querySelectorAll('.Restaurant__not__found').length).toEqual(1);
       done();
     });
 
