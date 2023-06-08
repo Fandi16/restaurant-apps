@@ -1,4 +1,4 @@
-import LikeButtonPresenter from '/xampp/htdocs/Dicoding/front end expert/restaurant-apps/src/scripts/utils/like-button-presenter';
+import LikeButtonPresenter from '../../src/scripts/utils/like-button-presenter';
 import FavoriteRestaurantIdb from '../../src/scripts/data/favorite-restaurant-idb';
     
 const createLikeButtonPresenterWithRestaurant = async (Restaurant) => {

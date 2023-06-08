@@ -51,6 +51,12 @@ window.addEventListener('load', () => {
   swRegister();
   WebSocketInitiator.init(CONFIG.WEB_SOCKET_SERVER);
 } );
+import('lodash.filter')
+    .then((module) => module.default)
+    .then(filterContacts)
+    .catch((error) => alert(error));
 
-filter(contacts, contactType.value === 'all' ? {} : { type: contactType.value })
-  .forEach(renderContact);
+const filterContacts = (filter) => {
+  filter(contacts, contactType.value === 'all' ? {} : { type: contactType.value })
+    .forEach(renderContact);
+};
