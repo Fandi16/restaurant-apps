@@ -1,6 +1,5 @@
 class FavoriteRestaurantSearchPresenter {
-  constructor ( { favoriteRestaurant, view } )
-  {
+  constructor({ favoriteRestaurant, view }) {
     this._view = view;
     this._listenToSearchRequestByUser();
     this._favoriteRestaurant = favoriteRestaurant;
@@ -8,9 +7,10 @@ class FavoriteRestaurantSearchPresenter {
 
   _listenToSearchRequestByUser() {
     this._view.runWhenUserIsSearching((latestQuery) => {
-        this._searchRestaurant(latestQuery);
+      this._searchRestaurant(latestQuery);
     });
-    }
+  }
+
   async _searchRestaurant(latestQuery) {
     this._latestQuery = latestQuery.trim();
     let foundRestaurant;
@@ -20,14 +20,12 @@ class FavoriteRestaurantSearchPresenter {
       foundRestaurant = await this._favoriteRestaurant.getAllRestaurant();
     }
 
-    this._showFoundRestaurant( foundRestaurant );
+    this._showFoundRestaurant(foundRestaurant);
   }
-  
-_showFoundRestaurant(Restaurants) {
-  this._view.showFavoriteRestaurant( Restaurants );
-}
 
-
+  _showFoundRestaurant(Restaurants) {
+    this._view.showFavoriteRestaurant(Restaurants);
+  }
 
   get latestQuery() {
     return this._latestQuery;

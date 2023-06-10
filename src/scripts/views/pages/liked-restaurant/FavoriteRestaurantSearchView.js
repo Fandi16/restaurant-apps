@@ -11,6 +11,7 @@ class FavoriteRestaurantSearchView {
        </div>
        `;
   }
+
   runWhenUserIsSearching(callback) {
     document.getElementById('query').addEventListener('change', (event) => {
       callback(event.target.value);
@@ -18,8 +19,9 @@ class FavoriteRestaurantSearchView {
   }
 
   showRestaurant(Restaurants) {
-        this.showFavoriteRestaurants(Restaurants);
+    this.showFavoriteRestaurants(Restaurants);
   }
+
   showFavoriteRestaurant(Restaurants = []) {
     let html;
     if (Restaurants.length) {
@@ -32,7 +34,8 @@ class FavoriteRestaurantSearchView {
 
     document.getElementById('Restaurant').dispatchEvent(new Event('Restaurant:updated'));
   }
-   _getEmptyRestaurantTemplate() {
+
+  _getEmptyRestaurantTemplate() {
     return '<div class="Restaurant-item__not__found Restaurant__not__found">Tidak ada Restaurant untuk ditampilkan</div>';
   }
 }

@@ -56,7 +56,7 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
         { id: 2 },
         { id: 3 },
       ]);
-  } );
+  });
   it('should be able to search for Restaurant', async () => {
     favoriteRestaurant.putRestaurant({ id: 1, title: 'Restaurant a' });
     favoriteRestaurant.putRestaurant({ id: 2, title: 'Restaurant b' });

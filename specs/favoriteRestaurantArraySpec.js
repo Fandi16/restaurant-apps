@@ -1,37 +1,38 @@
+/* eslint-disable eqeqeq */
 import { itActsAsFavoriteRestaurantModel } from './contract/favoriteRestaurantContract';
-    
+
 let favoriteRestaurant = [];
-    
+
 const FavoriteRestaurantArray = {
-    getRestaurant(id) {
+  getRestaurant(id) {
     if (!id) {
-        return;
+      return;
     }
-    
+
     return favoriteRestaurant.find((Restaurant) => Restaurant.id == id);
-    },
-    
-    getAllRestaurant() {
+  },
+
+  getAllRestaurant() {
     return favoriteRestaurant;
-    },
-    
-    putRestaurant(Restaurant) {
+  },
+
+  putRestaurant(Restaurant) {
     if (!Restaurant.hasOwnProperty('id')) {
-        return;
+      return;
     }
-    
+
     // pastikan id ini belum ada dalam daftar favoriteRestaurants
     if (this.getRestaurant(Restaurant.id)) {
-        return;
+      return;
     }
-    
+
     favoriteRestaurant.push(Restaurant);
-    },
-    
-    deleteRestaurant(id) {
+  },
+
+  deleteRestaurant(id) {
     favoriteRestaurant = favoriteRestaurant.filter((Restaurant) => Restaurant.id != id);
-    },
-    searchRestaurant(query) {
+  },
+  searchRestaurant(query) {
     return this.getAllRestaurant()
       .filter((Restaurant) => {
         const loweredCaseRestaurantTitle = (Restaurant.title || '-').toLowerCase();
@@ -44,9 +45,9 @@ const FavoriteRestaurantArray = {
       });
   },
 };
-    
+
 describe('Favorite Restaurant Array Contract Test Implementation', () => {
-    afterEach(() => favoriteRestaurant = []);
-    
-    itActsAsFavoriteRestaurantModel(FavoriteRestaurantArray);
+  afterEach(() => favoriteRestaurant = []);
+
+  itActsAsFavoriteRestaurantModel(FavoriteRestaurantArray);
 });

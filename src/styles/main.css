@@ -76,15 +76,14 @@ button {
 .open {
   left: 0;
 }
-.Jumbotran {
+/* .Jumbotran {
   background-image:
-    image-set(url('../public/images/heros/hero-image_2.jpg') 480w,
-      url('../public/images/heros/hero-image_2.jpg') 800w,
-      url('../public/images/heros/hero-image_2.jpg') 1420w,
+    image-set(url('/dist/images/hero-image_2-small.jpg') 480w,
+      url('/dist/images/hero-image_2-small.jpg') 800w,
     )
-}
+} */
 .Jumbotran {
-  background-image: url("../public/images/heros/hero-image_2.jpg");
+  background-image: image-set(url('/dist/images/hero-image_2-small.jpg') 1x, url('/dist/images/hero-image_2-large.jpg') 2x);
   display: flex;
   align-items: center;
   min-height: 70vh;

@@ -16,19 +16,19 @@ describe('Unliking A Restaurant', () => {
   });
 
   it('should display unlike widget when the Restaurant has been liked', async () => {
-    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 })
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
-    expect( document.querySelector( '[aria-label="unlike this Restaurant"]' ) ).toBeTruthy();
+    expect(document.querySelector('[aria-label="unlike this Restaurant"]')).toBeTruthy();
   });
 
   it('should not display like widget when the Restaurant has been liked', async () => {
-    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 })
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
     expect(document.querySelector('[aria-label="like this Restaurant"]')).toBeFalsy();
   });
 
   it('should be able to remove liked Restaurant from the list', async () => {
-    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 })
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
     document.querySelector('[aria-label="unlike this Restaurant"]').dispatchEvent(new Event('click'));
 
@@ -36,7 +36,7 @@ describe('Unliking A Restaurant', () => {
   });
 
   it('should not throw error if the unliked Restaurant is not in the list', async () => {
-    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 })
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
     await FavoriteRestaurantIdb.deleteRestaurant(1);
     document.querySelector('[aria-label="unlike this Restaurant"]').dispatchEvent(new Event('click'));
