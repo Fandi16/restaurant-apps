@@ -31,9 +31,6 @@ Scenario('liking one Restaurant', async ({ I }) => {
 });
 
 Scenario('Unliking one restaurant', async ({ I }) => {
-  // I.waitForElement('.Restaurant-item__not__found');
-  // I.see('Tidak ada restaurant untuk ditampilkan', '.Restaurant-item__not__found');
-
   I.amOnPage('/');
 
   I.waitForElement('.card_title a');

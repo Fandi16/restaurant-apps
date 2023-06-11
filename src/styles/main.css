@@ -83,7 +83,9 @@ button {
     )
 } */
 .Jumbotran {
-  background-image: image-set(url('/dist/images/hero-image_2-small.jpg') 1x, url('/dist/images/hero-image_2-large.jpg') 2x);
+  /* background-image: image-set(url('/dist/images/hero-image_2-large.jpg') 2x, url('/dist/images/hero-image_2-small.jpg') 1x); */
+  background-image: url('../public/images/heros/hero-image_2.jpg');
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   min-height: 70vh;
@@ -382,5 +384,19 @@ footer #footerTools {
   .list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .Jumbotran {
+    background-repeat: repeat;
+    background-image: url("../public/images/heros/hero-image_2-small.jpg");
+  }
+}
+
+@media (min-width: 800px) {
+  .Jumbotran {
+    background-image: url("../public/images/heros/hero-image_2.jpg");
   }
 }
