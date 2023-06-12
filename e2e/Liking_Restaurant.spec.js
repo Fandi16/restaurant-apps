@@ -49,7 +49,7 @@ Scenario('Unliking one restaurant', async ({ I }) => {
   assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
   I.wait(1);
 
-  I.click(likedRestaurantTitle);
+  I.click('.card_title a');
 
   I.seeElement('#likeButton');
   I.click('#likeButton');
@@ -57,5 +57,5 @@ Scenario('Unliking one restaurant', async ({ I }) => {
   I.amOnPage('/#/favorite');
   I.seeElement('.Restaurant-item__not__found');
   const unlikedRestaurantTitle = await I.grabTextFrom('.Restaurant-item__not__found');
-  assert.strictEqual(unlikedRestaurantTitle, 'Tidak ada restaurant untuk ditampilkan');
+  assert.strictEqual(unlikedRestaurantTitle, 'Tidak ada Restaurant untuk ditampilkan');
 });
